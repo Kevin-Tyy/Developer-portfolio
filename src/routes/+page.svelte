@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { boxContent } from "../utils/objects";
 	import Icon from "../components/Icon.svelte";
+	import { goto } from "$app/navigation";
 </script>
 
 <svelte:head>
@@ -38,15 +39,24 @@
 					fugit quisquam, repellat, minima qui ipsum commodi atque eos,
 					laboriosam maiores voluptas?
 				</p>
-				<div class="relative w-fit">
+				<div class="flex justify-between mr-10">
+					<div class="relative w-fit">
+						<button
+							on:click={() => goto("/about")}
+							class="flex cursor-pointer items-center gap-2 after:h-1 after:bg-secondary-100 after:w-14 hover:after:w-full after:transition-all after:duration-400 after:absolute after:bottom-0 pb-2 after:rounded-full after:left-0"
+						>
+							<span class="text-secondary-100"> My story </span>
+							<Icon
+								svgData="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+								classAttr="w-4 h-4 text-secondary-100"
+							/>
+						</button>
+					</div>
 					<button
-						class="flex cursor-pointer items-center gap-2 after:h-1 after:bg-secondary-100 after:w-14 hover:after:w-full after:transition-all after:duration-400 after:absolute after:bottom-0 pb-2 after:rounded-full after:left-0"
+						on:click={() => goto('/contact')}
+						class="w-28 h-10 bg-secondary-100 hover:bg-yellow-600 rounded-md"
 					>
-						<span class="text-secondary-100"> My story </span>
-						<Icon
-							svgData="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-							classAttr="w-4 h-4 text-secondary-100"
-						/>
+						Hire me
 					</button>
 				</div>
 			</div>
@@ -163,12 +173,29 @@
 					</button>
 				</div>
 			</div>
-			<div class="w-full flex justify-end">
-				<img
-					src="/project-demo.jpg"
-					alt="Project_image"
-					class="rounded-xl w-[400px] h-[500px] object-cover shadow-2xl"
-				/>
+			<div class="w-full flex justify-center relative">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div
+					class="-translate-y-10 -translate-x-10 cursor-pointer group"
+					on:click={() => goto("/works")}
+				>
+					<img
+						src="/project-demo.jpg"
+						alt="Project_image"
+						class="rounded-xl w-[400px] h-[500px] object-cover shadow-2xl transition-all duration-500 group-hover:translate-x-2"
+					/>
+					<img
+						src="/project-demo.jpg"
+						alt="Project_image"
+						class="rounded-xl w-[400px] h-[500px] absolute top-10 -right-10 object-cover shadow-2xl transition-all duration-500 group-hover:translate-x-10"
+					/>
+					<img
+						src="/project-demo.jpg"
+						alt="Project_image"
+						class="rounded-xl w-[400px] h-[500px] absolute top-20 -right-20 object-cover shadow-2xl transition-all duration-500 group-hover:translate-x-24"
+					/>
+				</div>
 			</div>
 		</div>
 	</div>

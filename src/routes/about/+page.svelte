@@ -1,8 +1,11 @@
 <script lang="ts">
+
 </script>
+
 <svelte:head>
-	<title>Kevin † Portfolio</title>
+	<title>Kevin † About</title>
 </svelte:head>
+
 <section>
-	<h1>Hello Projects</h1>
+	<h1>About me</h1>
 </section>

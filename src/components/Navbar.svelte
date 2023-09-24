@@ -12,8 +12,12 @@
 			link: "/works",
 		},
 		{
-			title: "Blog",
-			link: "/blog",
+			title: "About",
+			link: "/about",
+		},
+		{
+			title: "Contact",
+			link: "/contact",
 		},
 	];
 
