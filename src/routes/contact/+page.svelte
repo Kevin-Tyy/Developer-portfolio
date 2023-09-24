@@ -71,7 +71,7 @@
 		/>
 
 		<label for="message" class="text-gray-200 text-xs uppercase"
-			>Message<span class="text-red-400 text-xs">*</span></label
+			>Message</label
 		>
 		<textarea
 			id="message"
