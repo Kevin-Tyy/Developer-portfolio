@@ -9,7 +9,11 @@ export default {
 				"primary-dark-300": "#474466",
 				"secondary-100": "#FFC31F",
 			},
+			content: {
+				quotes: "url('/quotes.png')",
+			},
 		},
+		
 	},
 	plugins: [],
 };
