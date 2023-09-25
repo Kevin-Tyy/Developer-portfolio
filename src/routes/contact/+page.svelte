@@ -1,9 +1,72 @@
 <script lang="ts">
 	import Icon from "../../components/Icon.svelte";
-	let names: string;
-	let email: string;
-	let subject: string;
-	let message: string;
+	import emailjs from "@emailjs/browser";
+	import {
+		PUBLIC_KEY,
+		PUBLIC_SERVICE_ID,
+		PUBLIC_TEMPLATE_ID,
+	} from "$env/static/public";
+
+	let names: string = "";
+	let email: string = "";
+	let subject: string = "";
+	let message: string = "";
+	let loading: boolean = false;
+	//state for error messages
+
+	let nameError: string;
+	let emailError: string;
+	let subjectError: string;
+
+	const validateEmail = (email: string) => {
+		if (!email) {
+			emailError = "Email is required";
+		} else if (!/\S+@\S+\.\S+/.test(email)) {
+			emailError = "Invalid email format";
+		} else {
+			emailError = "";
+		}
+	};
+
+	const validateNames = (names: string) => {
+		if (names.trim().length < 1) {
+			nameError = "Enter a name";
+		} else {
+			nameError = "";
+		}
+	};
+	const validateSubject = (subject: string) => {
+		if (!subject) {
+			subjectError = "Select a subject";
+		} else {
+			subjectError = "";
+		}
+	};
+
+	function sendEmail(e: any) {
+		loading = true;
+		emailjs
+			.sendForm(PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, e.target, PUBLIC_KEY)
+			.then(
+				(result) => {
+					console.log("SUCCESS!", result.text);
+				},
+				(error) => {
+					console.log("FAILED...", error.text);
+				}
+			)
+			.finally(() => {
+				loading = false;
+			});
+	}
+	const submitHandler = (e: any) => {
+		validateEmail(email);
+		validateNames(names);
+		validateSubject(subject);
+		if (!nameError || !subjectError || !emailError) {
+			sendEmail(e);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -26,57 +89,76 @@
 	<a href="mailto:tuyizerek27@gmail.com" class="text-sm text-gray-400"
 		>tuyizerek27@gmail.com</a
 	>
-
-	<p class="text-red-400 text-xs mt-10">* Marked fields are required to continue</p>
-	<form class="mt-10" method="post">
-		<div class="flex gap-6">
+	{#if nameError || subjectError || emailError}
+		<p class="text-red-400 text-xs mt-10">
+			* Marked fields are required to continue
+		</p>
+	{/if}
+	<form class="mt-10" method="post" on:submit|preventDefault={submitHandler}>
+		<div class="flex items-center gap-6">
 			<div class="w-full">
-				<label for="email" class="text-gray-200 text-xs uppercase"
-					>Full names<span class="text-red-400 text-xs">*</span></label
-				>
+				<div class="flex items-center gap-2">
+					<label for="email" class="text-gray-200 text-xs uppercase"
+						>Full names<span class="text-red-400 text-xs">*</span></label
+					>{#if nameError}
+						<p class="text-red-400 text-xs">
+							{nameError}
+						</p>
+					{/if}
+				</div>
 				<input
 					type="text"
-					id="email"
+					name="names"
+					id="names"
 					placeholder="Your names"
 					bind:value={names}
-					required
-					class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
+					class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-3"
 				/>
 			</div>
 			<div class="w-full">
-				<label for="email" class="text-gray-200 text-xs uppercase"
-					>Email<span class="text-red-400 text-xs">*</span></label
-				>
+				<div class="flex items-center gap-2">
+					<label for="email" class="text-gray-200 text-xs uppercase"
+						>Email<span class="text-red-400 text-xs">*</span></label
+					>
+					{#if emailError}
+						<p class="text-red-400 text-xs">
+							{emailError}
+						</p>
+					{/if}
+				</div>
 				<input
-					type="email"
 					id="email"
+					name="email"
 					placeholder="Your email address"
 					bind:value={email}
-					required
-					class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
+					class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-3"
 				/>
 			</div>
 		</div>
-
-		<label for="subject" class="text-gray-200 text-xs uppercase"
-			>Subject<span class="text-red-400 text-xs">*</span></label
-		>
+		<div class="flex items-center gap-2">
+			<label for="subject" class="text-gray-200 text-xs uppercase"
+				>Subject<span class="text-red-400 text-xs">*</span></label
+			>
+			{#if subjectError}
+				<p class="text-red-400 text-xs">
+					{subjectError}
+				</p>
+			{/if}
+		</div>
 		<input
 			type="text"
 			id="subject"
+			name="subject"
 			bind:value={subject}
-			required
 			placeholder="Select a subject"
 			class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
 		/>
 
-		<label for="message" class="text-gray-200 text-xs uppercase"
-			>Message</label
-		>
+		<label for="message" class="text-gray-200 text-xs uppercase">Message</label>
 		<textarea
 			id="message"
 			bind:value={message}
-			required
+			name="message"
 			placeholder="Write your message here..."
 			class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none h-32 resize-none text-sm placeholder:text-gray-500 mb-8 pt-2 pb-2"
 		/>
@@ -92,6 +174,18 @@
 			<span>Add an attachment</span>
 		</label>
 		<input type="file" id="attachment" class="hidden" />
-		<button type="submit" class="bg-secondary-100 py-3 px-4 mt-10 rounded-full text-black text-xs uppercase">Send message</button>
+		<button
+			type="submit"
+			disabled={loading}
+			class={`bg-secondary-100 py-3 px-4 mt-10 rounded-full text-black text-xs uppercase ${
+				loading && "opacity-70"
+			}`}
+		>
+			{#if loading}
+				Sending..
+			{:else}
+				Send message
+			{/if}
+		</button>
 	</form>
 </section>
