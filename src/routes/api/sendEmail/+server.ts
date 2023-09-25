@@ -10,6 +10,7 @@ export const POST: RequestHandler = async ({
 	try {
 		const body = await request.json();
 		console.log("Received request:", body);
+		
 		const message = {
 			from: body.email,
 			to: GOOGLE_EMAIL,

@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @heroicons/svelte
+  C:\Program Files\nodejs\node.exe C:\Users\user\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add -D @types/svelte-toast
 
 PATH: 
   C:\Users\user\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\user\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Program Files\Git\cmd;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\chocolatey\bin;C:\Users\user\AppData\Local\Programs\Python\Python311\Scripts;C:\Users\user\AppData\Local\Programs\Python\Python311;C:\Users\user\.console-ninja\.bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Roaming\npm;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\user\AppData\Local\JetBrains\CLion 2022.3.3\bin;C:\Users\user\AppData\Roaming\Composer\vendor\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.1.4\bin;C:\Program Files\JetBrains\PyCharm Community Edition 2023.2.1\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@heroicons%2fsvelte: Not found
+  Error: https://registry.yarnpkg.com/@types%2fsvelte-toast: Not found
       at params.callback [as _callback] (C:\Users\user\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
       at self.callback (C:\Users\user\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
       at Request.emit (node:events:513:28)
@@ -41,6 +41,7 @@ npm manifest:
   	"devDependencies": {
   		"@sveltejs/adapter-auto": "^2.0.0",
   		"@sveltejs/kit": "^1.20.4",
+  		"@types/nodemailer": "^6.4.11",
   		"svelte": "^4.0.5",
   		"svelte-check": "^3.4.3",
   		"tslib": "^2.4.1",
@@ -49,8 +50,11 @@ npm manifest:
   	},
   	"type": "module",
   	"dependencies": {
+  		"@emailjs/browser": "^3.11.0",
   		"autoprefixer": "^10.4.16",
+  		"nodemailer": "^6.9.5",
   		"postcss": "^8.4.30",
+  		"svelte-toast": "^1.0.0",
   		"tailwind-merge": "^1.14.0",
   		"tailwindcss": "^3.3.3"
   	}
@@ -76,6 +80,11 @@ Lockfile:
     dependencies:
       "@jridgewell/gen-mapping" "^0.3.0"
       "@jridgewell/trace-mapping" "^0.3.9"
+  
+  "@emailjs/browser@^3.11.0":
+    version "3.11.0"
+    resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-3.11.0.tgz#0e78de2f85096d1a9ad5b5977b060bb5d1784cb4"
+    integrity sha512-RkY3FKZ3fPdK++OeF46mRTFpmmQWCHUVHZH209P3NE4D5sg2Atg7S2wa3gw5062Gl4clt4Wn5SyC4WhlVZC5pA==
   
   "@esbuild/android-arm64@0.18.20":
     version "0.18.20"
@@ -300,6 +309,18 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/@types/estree/-/estree-1.0.1.tgz#aa22750962f3bf0e79d753d3cc067f010c95f194"
     integrity sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==
+  
+  "@types/node@*":
+    version "20.6.5"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-20.6.5.tgz#4c6a79adf59a8e8193ac87a0e522605b16587258"
+    integrity sha512-2qGq5LAOTh9izcc0+F+dToFigBWiK1phKPt7rNhOqJSr35y8rlIBjDwGtFSgAI6MGIhjwOVNSQZVdJsZJ2uR1w==
+  
+  "@types/nodemailer@^6.4.11":
+    version "6.4.11"
+    resolved "https://registry.yarnpkg.com/@types/nodemailer/-/nodemailer-6.4.11.tgz#98630b15b95f292940d27cf4f314c42c70dfdf19"
+    integrity sha512-Ld2c0frwpGT4VseuoeboCXQ7UJIkK3X7Lx/4YsZEiUHtHsthWAOCYtf6PAiLhMtfwV0cWJRabLBS3+LD8x6Nrw==
+    dependencies:
+      "@types/node" "*"
   
   "@types/pug@^2.0.6":
     version "2.0.6"
@@ -852,6 +873,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.13.tgz#d5ed1627c23e3461e819b02e57b75e4899b1c81d"
     integrity sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==
   
+  nodemailer@^6.9.5:
+    version "6.9.5"
+    resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.5.tgz#eaeae949c62ec84ef1e9128df89fc146a1017aca"
+    integrity sha512-/dmdWo62XjumuLc5+AYQZeiRj+PRR8y8qKtFCOyuOl1k/hckZd8durUUHs/ucKx6/8kN+wFxqKJlQ/LK/qR5FA==
+  
   normalize-path@^3.0.0, normalize-path@~3.0.0:
     version "3.0.0"
     resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
@@ -1142,6 +1168,11 @@ Lockfile:
       magic-string "^0.27.0"
       sorcery "^0.11.0"
       strip-indent "^3.0.0"
+  
+  svelte-toast@^1.0.0:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/svelte-toast/-/svelte-toast-1.0.0.tgz#9b562d8c819a38c524e07b3f17f30b46dae7c630"
+    integrity sha512-i6XHJgCgyAYmobEXS78iei6cQBLYIDgk1rrj65wM0sIi4RzCl/9205sVruZT7zUf0N2xsLkeN2rFh9inlRJXEg==
   
   svelte@^4.0.5:
     version "4.2.1"

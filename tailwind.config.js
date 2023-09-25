@@ -12,8 +12,17 @@ export default {
 			content: {
 				quotes: "url('/quotes.png')",
 			},
+			keyframes: {
+				"slide-in": {
+					from: { opacity: 0, transform: "translateY(20%)" },
+					to: { opacity: 1, transform: "none" },
+				},
+				"slide-out": {
+					from: { opacity: 0, transform: "translateY(-25%)" },
+					to: { opacity: 1, transform: "none" },
+				},
+			},
 		},
-		
 	},
 	plugins: [],
 };

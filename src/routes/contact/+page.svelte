@@ -6,6 +6,7 @@
 		PUBLIC_SERVICE_ID,
 		PUBLIC_TEMPLATE_ID,
 	} from "$env/static/public";
+	import Snackbar from "../../components/Snackbar.svelte";
 
 	let names: string = "";
 	let email: string = "";
@@ -49,7 +50,8 @@
 			.sendForm(PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, e.target, PUBLIC_KEY)
 			.then(
 				(result) => {
-					console.log("SUCCESS!", result.text);
+					showSnackbar();
+					resetPage();
 				},
 				(error) => {
 					console.log("FAILED...", error.text);
@@ -67,15 +69,43 @@
 			sendEmail(e);
 		}
 	};
+
+	const resetPage = () => {
+		names = "";
+		subject = "";
+		email = "";
+		message = "";
+	};
+	//snack bar notification
+	function hideSnackbar() {
+		isSnackbarVisible = false;
+	}
+
+	let snackbarMessage: string;
+	let isSnackbarVisible: boolean;
+	function showSnackbar() {
+		snackbarMessage = "Message delivered <br> you'll hear from me soon";
+		isSnackbarVisible = true;
+		setTimeout(hideSnackbar, 2000);
+	}
+	const subjects = [
+		"Web application",
+		"Mobile application",
+		"UI/UX design",
+		"Desktop application",
+		"Database development",
+	];
+	function handleSelectChange(event: any) {
+		subject = event.target.value;
+	}
 </script>
 
 <svelte:head>
 	<title>Kevin † Contact</title>
 </svelte:head>
-
 <section class="mt-24 max-w-[600px] mx-auto">
 	<div
-		class="ring-1 ring-gray-300 w-fit text-sm text-gray-300 flex items-center gap-2 p-2 rounded-full"
+		class="ring-1 ring-gray-300 w-fit text-xs text-gray-300 flex items-center gap-2 px-3 py-2 rounded-full uppercase"
 	>
 		<Icon
 			classAttr="text-white w-4 h-4"
@@ -145,15 +175,16 @@
 				</p>
 			{/if}
 		</div>
-		<input
-			type="text"
-			id="subject"
-			name="subject"
-			bind:value={subject}
-			placeholder="Select a subject"
-			class="bg-transparent w-full block text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
-		/>
 
+		<select
+			bind:value={subject}
+			on:change={handleSelectChange}
+			class="bg-transparent w-full block bg-primary-dark-200 text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
+		>
+			{#each subjects as subject (subject)}
+				<option value={subject} class="bg-primary-dark-200">{subject}</option>
+			{/each}
+		</select>
 		<label for="message" class="text-gray-200 text-xs uppercase">Message</label>
 		<textarea
 			id="message"
@@ -178,7 +209,7 @@
 			type="submit"
 			disabled={loading}
 			class={`bg-secondary-100 py-3 px-4 mt-10 rounded-full text-black text-xs uppercase ${
-				loading && "opacity-70"
+				loading && "opacity-70	"
 			}`}
 		>
 			{#if loading}
@@ -188,4 +219,5 @@
 			{/if}
 		</button>
 	</form>
+	<Snackbar {isSnackbarVisible} {snackbarMessage} />
 </section>
