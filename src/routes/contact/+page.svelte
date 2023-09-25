@@ -50,10 +50,11 @@
 			.sendForm(PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, e.target, PUBLIC_KEY)
 			.then(
 				(result) => {
-					showSnackbar();
+					showSnackbar("Message delivered <br> you'll hear from me soon");
 					resetPage();
 				},
 				(error) => {
+					showSnackbar("Couldn't send message");
 					console.log("FAILED...", error.text);
 				}
 			)
@@ -83,8 +84,8 @@
 
 	let snackbarMessage: string;
 	let isSnackbarVisible: boolean;
-	function showSnackbar() {
-		snackbarMessage = "Message delivered <br> you'll hear from me soon";
+	function showSnackbar(snackMessage : string) {
+		snackbarMessage = snackMessage;
 		isSnackbarVisible = true;
 		setTimeout(hideSnackbar, 2000);
 	}
