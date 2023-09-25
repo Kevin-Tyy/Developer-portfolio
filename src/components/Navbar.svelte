@@ -4,7 +4,7 @@
 
 	let navObj = [
 		{
-			title: "Services",
+			title: "Home",
 			link: "/",
 		},
 		{

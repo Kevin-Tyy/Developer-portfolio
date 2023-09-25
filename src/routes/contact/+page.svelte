@@ -65,7 +65,7 @@
 		validateEmail(email);
 		validateNames(names);
 		validateSubject(subject);
-		if (!nameError || !subjectError || !emailError) {
+		if (!nameError && !subjectError && !emailError) {
 			sendEmail(e);
 		}
 	};
@@ -178,6 +178,7 @@
 
 		<select
 			bind:value={subject}
+			name="subject"
 			on:change={handleSelectChange}
 			class="bg-transparent w-full block bg-primary-dark-200 text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
 		>
