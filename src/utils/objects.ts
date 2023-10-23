@@ -128,3 +128,48 @@ export const services = [
 			"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet, molestiae. Consequatur laboriosam incidunt inventore tempore, itaque repellendus. ",
 	},
 ];
+
+export const projects = [
+	{
+		image : "/projects/template-kit.avif",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+	{
+		image : "/projects/dat-dashboard.jpg",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+	{
+		image : "/projects/ecom.jpg",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+	{
+		image : "/projects/fatty-foods.avif",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+	{
+		image : "/projects/spidey-drib.png",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+	{
+		image : "/projects/template-kit.avif",
+		tags : ["Figma", "React", "Bootstrap"],
+		description : "	Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt velit, pariatur voluptates aliquid expedita, maiores, suscipit atque molestiae neque tenetur sunt omnis qui totam ipsum ipsam quos amet sed nemo",
+		live : "http://localhost:5173",
+		github : "https://github.com/Kevin-Tyy"
+	},
+]

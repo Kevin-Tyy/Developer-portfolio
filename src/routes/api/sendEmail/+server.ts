@@ -8,9 +8,7 @@ export const POST: RequestHandler = async ({
 	request: Request;
 }) => {
 	try {
-		const body = await request.json();
-		console.log("Received request:", body);
-		
+		const body = await request.json();		
 		const message = {
 			from: body.email,
 			to: GOOGLE_EMAIL,
