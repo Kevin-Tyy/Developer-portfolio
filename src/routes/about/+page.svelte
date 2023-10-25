@@ -19,7 +19,7 @@
 >
 	<path stroke-linecap="round" stroke-linejoin="round" d="" />
 </svg>
-<section>
+<section class="pt-28">
 	<div class="max-w-[1200px] pb-20 mx-auto">
 		<div class="flex justify-between">
 			<div>

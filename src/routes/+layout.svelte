@@ -8,8 +8,10 @@
 	<meta name="description" content="Kevin Tuyizere Portolio" />
 </svelte:head>
 
-<div class="bg-primary-dark-100 h-full min-h-screen">
+<div class="bg-primary-dark-100 h-full min-h-screen relative">
 	<Navbar />
 	<Sidebar />
-	<slot />
+	<div class="pt-">
+		<slot />
+	</div>
 </div>

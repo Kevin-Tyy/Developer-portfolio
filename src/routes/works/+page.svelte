@@ -7,7 +7,7 @@
 	<title>Kevin † Portfolio</title>
 </svelte:head>
 <section>
-	<div class="max-w-[1300px] mx-auto mt-14">
+	<div class="max-w-[1300px] mx-auto pt-32">
 		<div
 			class="ring-1 ring-gray-300 w-fit text-xs text-gray-300 flex items-center gap-2 p-2 rounded-full px-3 py-2 uppercase"
 		>
@@ -17,25 +17,25 @@
 			/>
 			Portfolio
 		</div>
-		<div class="grid gap-4 grid-cols-1 mt-10">
+		<div class="grid gap-4 grid-cols-4 mt-10">
 			{#each projects as item}
-				<div class="relative rounded-xl overflow-hidden max-w-md">
+				<div class="relative  w-full group rounded-2xl overflow-hidden hover:cursor-pointer">
 					<div>
 						<img
 							src={item.image}
 							alt="Project Preview"
-							class="w-full h-80 object-cover rounded-2xl"
+							class="w-full h-72 object-cover  group-hover:scale-110 transition duration-200 rounded-2xl"
 						/>
 					</div>
-					<div class="flex gap-2 absolute bottom-2 left-2 z-50">
+					<div class="flex gap-2 absolute bottom-0 right-0 mb-4 ml-2 z-[2] left-2">
 						{#each item.tags as tag}
-							<div class="bg-primary-dark-300 rounded-md p-2 cursor-pointer border-1 border-gray-200 text-xs ">
+							<div class="bg-primary-dark-300 rounded-md p-2 cursor-pointer border-1 border-gray-200 text-xs text-white">
 								{tag}
 							</div>
 						{/each}
 					</div>
 					<div
-						class="absolute top-0 right-0 left-0 bottom-0 z-50 bg-gradient-to-b from-black to-black rounded-2xl"
+						class="absolute top-0 right-0 left-0 bottom-0 z-[1] bg-gradient-to-b from-black/30 to-black"
 					/>
 				</div>
 			{/each}

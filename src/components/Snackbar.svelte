@@ -23,6 +23,7 @@
 		border-radius: 4px;
 		opacity: 0;
 		transition: opacity 0.3s;
+		z-index: 99999;
 	}
 
 	.isSnackbarVisible {

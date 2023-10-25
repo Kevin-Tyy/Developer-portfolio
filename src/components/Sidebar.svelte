@@ -28,7 +28,7 @@
 </script>
 
 <nav
-	class="p-1.5 fixed top-1/3 flex h-fit items-center bg-primary-dark-300/10 backdrop-blur-lg ring-1 ring-primary-dark-300 ml-1 rounded-2xl"
+	class="p-1.5 fixed top-1/3 flex h-fit items-center bg-primary-dark-300/10 backdrop-blur-lg ring-1 ring-primary-dark-300 ml-1 rounded-2xl z-[99999999999]"
 >
 	<ul class="flex flex-col w-fit gap-2">
 		{#each utilObj as item}

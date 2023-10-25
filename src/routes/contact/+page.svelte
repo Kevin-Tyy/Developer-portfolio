@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Icon from "../../components/Icon.svelte";
 	import emailjs from "@emailjs/browser";
+	import Select from "svelte-select";
+
 	import {
 		PUBLIC_KEY,
 		PUBLIC_SERVICE_ID,
@@ -50,7 +52,7 @@
 			.sendForm(PUBLIC_SERVICE_ID, PUBLIC_TEMPLATE_ID, e.target, PUBLIC_KEY)
 			.then(
 				(result) => {
-					showSnackbar("Message delivered <br> you'll hear from me soon");
+					showSnackbar("Message delivered <br> you'll hear from me soon 😉");
 					resetPage();
 				},
 				(error) => {
@@ -84,7 +86,7 @@
 
 	let snackbarMessage: string;
 	let isSnackbarVisible: boolean;
-	function showSnackbar(snackMessage : string) {
+	function showSnackbar(snackMessage: string) {
 		snackbarMessage = snackMessage;
 		isSnackbarVisible = true;
 		setTimeout(hideSnackbar, 2000);
@@ -100,11 +102,12 @@
 		subject = event.target.value;
 	}
 </script>
+
 z
 <svelte:head>
 	<title>Kevin † Contact</title>
 </svelte:head>
-<section class="mt-24 max-w-[600px] mx-auto">
+<section class="pt-28 max-w-[600px] mx-auto">
 	<div
 		class="ring-1 ring-gray-300 w-fit text-xs text-gray-300 flex items-center gap-2 px-3 py-2 rounded-full uppercase"
 	>
@@ -117,9 +120,13 @@ z
 	<h1 class="text-white text-3xl mt-10 mb-5">
 		Let's work <span class="text-secondary-100">Together!</span>
 	</h1>
-	<a href="mailto:tuyizerek27@gmail.com" class="text-sm text-gray-400"
-		>tuyizerek27@gmail.com</a
-	>
+	<a href="mailto:tuyizerek27@gmail.com" class="text-sm text-gray-400 flex items-center gap-2">
+		<Icon
+			svgData="M17 20.5H7C4 20.5 2 19 2 15.5V8.5C2 5 4 3.5 7 3.5H17C20 3.5 22 5 22 8.5V15.5C22 19 20 20.5 17 20.5Z M18.7698 7.7688L13.2228 12.0551C12.5025 12.6116 11.4973 12.6116 10.777 12.0551L5.22998 7.7688"
+			classAttr="text-gray-500 w-5 group-focus-within:text-white transition duration-200"
+		/>
+		<span> tuyizerek27@gmail.com </span>
+	</a>
 	{#if nameError || subjectError || emailError}
 		<p class="text-red-400 text-xs mt-10">
 			* Marked fields are required to continue
@@ -176,17 +183,17 @@ z
 				</p>
 			{/if}
 		</div>
+		<div class="border-b border-gray-500 focus-within:border-white !mb-6">
+			<Select
+				--list-border-radius="10px"
+				on:change={handleSelectChange}
+				bind:value={subject}
+				multiple
+				class="w-full block !bg-transparent text-white !border-none !focus:border-white outline-none placeholder:text-gray-500 mb-8 pt-1 pb-2 !px-0 !text-sm"
+				items={subjects}
+			/>
+		</div>
 
-		<select
-			bind:value={subject}
-			name="subject"
-			on:change={handleSelectChange}
-			class="bg-transparent w-full block bg-primary-dark-200 text-white border-b border-gray-500 focus-within:border-white outline-none text-sm placeholder:text-gray-500 mb-8 pt-1 pb-2"
-		>
-			{#each subjects as subject (subject)}
-				<option value={subject} class="bg-primary-dark-200">{subject}</option>
-			{/each}
-		</select>
 		<label for="message" class="text-gray-200 text-xs uppercase">Message</label>
 		<textarea
 			id="message"

@@ -21,6 +21,7 @@
 	position: absolute;
 	top: -60px;
 	left: -40px;
+	opacity: 0.2;
 }
 .custom-content::after {
 	content: "";
@@ -34,6 +35,7 @@
 	bottom: -50px;
 	right: -20px;
 	rotate: 180deg;
+	opacity: 0.2;
 }
 
 ::-webkit-scrollbar {
@@ -54,4 +56,22 @@
 ::selection {
 	color: rgb(255, 255, 255);
 	background-color: rgb(69, 65, 88);
+}
+
+.list-item {
+	background-color: #35344A !important;
+}
+.hover {
+	background-color: #474466 !important;
+	cursor: pointer !important;
+
+}
+.multi-item {
+	background-color: #474466 !important;
+	outline: none !important;
+	cursor: pointer !important;
+}
+.svelte-82qwg8::placeholder{
+	font-size: 15px !important;
+	color: #6b7280;
 }

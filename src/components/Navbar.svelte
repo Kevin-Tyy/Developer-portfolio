@@ -27,7 +27,7 @@
 	});
 </script>
 
-<nav class="bg-primary-dark-200 flex items-center justify-between py-5 px-10">
+<nav class="flex items-center justify-between py-5 px-10 max-w-[1500px] mx-auto absolute left-0 right-0">
 	<img src="/logo.png" alt="logo" class="w-10" />
 	<div class="flex justify-between gap-4 mr-10">
 		{#each navObj as item}
