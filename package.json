@@ -23,6 +23,7 @@
 	"type": "module",
 	"dependencies": {
 		"@emailjs/browser": "^3.11.0",
+		"@sveltejs/adapter-vercel": "^5.1.0",
 		"autoprefixer": "^10.4.16",
 		"depcheck": "^1.4.7",
 		"flowbite-svelte": "^0.44.23",
